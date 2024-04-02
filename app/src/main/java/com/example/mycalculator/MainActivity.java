@@ -86,11 +86,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MaterialButton btn_backSpace = (MaterialButton) findViewById(R.id.delete);
         MaterialButton btn_parenthesis = (MaterialButton) findViewById(R.id.parenthesis);
         MaterialButton btn_dot = (MaterialButton) findViewById(R.id.dot);
+        MaterialButton btn_equals = (MaterialButton) findViewById(R.id.equals);
 
         btn_allClear.setOnClickListener(this);
         btn_backSpace.setOnClickListener(this);
         btn_parenthesis.setOnClickListener(this);
         btn_dot.setOnClickListener(this);
+        btn_equals.setOnClickListener(this);
     }
 
 
@@ -178,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             dot_btn(v);
         }
         else if (v.getId() == R.id.equals) {
-
+            equals_btn(v);
         }
     }
 
@@ -290,6 +292,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userExp = userExp.replaceAll("×", "*");
 
         Expression exp = new Expression(userExp);
+        String result = String.valueOf(exp.calculate());
+        input.setText(result);
+
+        input.setText(result);
+        input.setSelection(result.length());
+
     }
 
 }
