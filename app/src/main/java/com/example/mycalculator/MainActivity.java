@@ -14,7 +14,7 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private  TextView input;
+    private EditText input;
     private int number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         numbers();
         operators();
+        misc_btn();
 
         input = findViewById(R.id.textfield_bottom);
         input.setShowSoftInputOnFocus(false);
@@ -78,6 +79,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_multiply.setOnClickListener(this);
         btn_divide.setOnClickListener(this);
 
+    }
+
+    public void misc_btn(){
+        MaterialButton btn_allClear = (MaterialButton) findViewById(R.id.all_clear);
+        btn_allClear.setOnClickListener(this);
     }
 
 
@@ -145,6 +151,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v.getId() == R.id.division) {
             divide_btn(v);
         }
+        else if (v.getId() == R.id.all_clear) {
+            allClear_btn(v);
+        }
     }
 
 
@@ -201,6 +210,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void divide_btn(View view){
         updateText("/");
+    }
+
+    public void allClear_btn(View view){
+        updateText("");
     }
 
 }

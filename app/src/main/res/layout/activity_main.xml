@@ -14,23 +14,23 @@
       >
 
 
-        <TextView
-            android:id="@+id/textfield_top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="10dp"
-            android:padding="10dp"
-            android:text=""
-            android:textAlignment="textEnd"
-            android:textColor="#C3C3C3"
-            android:textSize="51sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/textfield_top"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="100dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:text=""-->
+<!--            android:textAlignment="textEnd"-->
+<!--            android:textColor="#C3C3C3"-->
+<!--            android:textSize="51sp" />-->
 
-        <TextView
+        <EditText
             android:id="@+id/textfield_bottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/_0"
+            android:layout_height="300dp"
+            android:text="@string/display"
             android:textAlignment="textEnd"
             android:textSize="100sp"
             android:textColor="@color/white"
@@ -61,7 +61,7 @@
 
                     <!--First Row-->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/clear"
+                        android:id="@+id/all_clear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_rowWeight="1"
