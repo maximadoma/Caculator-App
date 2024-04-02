@@ -30,7 +30,7 @@
             android:id="@+id/textfield_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/_0"
             android:textAlignment="textEnd"
             android:textSize="100sp"
             android:textColor="@color/white"
@@ -68,7 +68,7 @@
                         android:layout_columnWeight="1"
                         android:backgroundTint="#BABABA"
                         android:fontFamily="@font/coolvetica_rg"
-                        android:text="C"
+                        android:text="AC"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:cornerRadius="10dp" />
@@ -297,7 +297,8 @@
                         android:text="0"
                         android:textColor="@color/black"
                         android:textSize="26sp"
-                        app:cornerRadius="10dp" />
+                        app:cornerRadius="10dp"
+                        />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/delete"

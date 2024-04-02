@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Simple Calculator</string>
+    <string name="display">0</string>
 </resources>
