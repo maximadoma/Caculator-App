@@ -17,7 +17,8 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText input;
-    private int number;
+    private EditText answer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         input = findViewById(R.id.textfield_bottom);
         input.setShowSoftInputOnFocus(false);
+
+        answer = findViewById(R.id.textfield_answer);
 
         input.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -293,9 +296,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Expression exp = new Expression(userExp);
         String result = String.valueOf(exp.calculate());
-        input.setText(result);
 
-        input.setText(result);
+        if (result.endsWith(".0")){
+            result =result.replace(".0", "");
+            input.setText(result);
+            answer.setText("");
+        } else{
+            input.setText(result);
+            answer.setText("");
+        }
+
         input.setSelection(result.length());
 
     }
