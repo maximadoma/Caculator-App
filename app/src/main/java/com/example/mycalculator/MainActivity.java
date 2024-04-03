@@ -282,6 +282,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             input.setText(selection);
             input.setSelection(cursorPosition - 1);
         }
+
+        if (cursorPosition == 1 && textLength == 1){
+            input.setText("꣐");
+        }
+        answer.setText("");
     }
 
 
@@ -311,6 +316,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void equals_btn(View view){
+        answer.setText("0");
         String userExp = input.getText().toString();
 
         userExp = userExp.replaceAll("÷", "/");
@@ -322,10 +328,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        if (result.endsWith(".0")){
             result =result.replace(".0", "");
             input.setText(result);
-            answer.setText("");
         } else{
             input.setText(result);
-            answer.setText("");
         }
 
         input.setSelection(result.length());
