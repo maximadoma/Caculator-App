@@ -17,7 +17,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText input;
-    private EditText answer;
+    private TextView answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         input.setShowSoftInputOnFocus(false);
 
         answer = findViewById(R.id.textfield_answer);
+        answer.setShowSoftInputOnFocus(false);
 
         input.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +91,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MaterialButton btn_parenthesis = (MaterialButton) findViewById(R.id.parenthesis);
         MaterialButton btn_dot = (MaterialButton) findViewById(R.id.dot);
         MaterialButton btn_equals = (MaterialButton) findViewById(R.id.equals);
+        MaterialButton btn_modulo = (MaterialButton) findViewById(R.id.modulo);
 
         btn_allClear.setOnClickListener(this);
         btn_backSpace.setOnClickListener(this);
         btn_parenthesis.setOnClickListener(this);
         btn_dot.setOnClickListener(this);
         btn_equals.setOnClickListener(this);
+        btn_modulo.setOnClickListener(this);
     }
 
 
@@ -185,6 +188,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v.getId() == R.id.equals) {
             equals_btn(v);
         }
+        else if (v.getId() == R.id.modulo){
+            modulo_btn(v);
+        }
     }
 
     public void dot_btn(View view){
@@ -249,6 +255,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         input.setText("");
     }
 
+    public void modulo_btn(View view){
+        updateText("%");
+    }
+
 
     public void backSpace_btn(View view){
         int cursorPosition = input.getSelectionStart();
@@ -300,14 +310,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (result.endsWith(".0")){
             result =result.replace(".0", "");
             input.setText(result);
-            answer.setText("");
         } else{
             input.setText(result);
-            answer.setText("");
         }
 
         input.setSelection(result.length());
 
     }
+
 
 }
