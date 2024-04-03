@@ -1,18 +1,16 @@
 package com.example.mycalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.google.android.material.button.MaterialButton;
-
 import org.mariuszgromada.math.mxparser.Expression;
-import org.w3c.dom.Text;
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Scriptable;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -122,10 +120,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-
         if (v.getId() == R.id.zero) {
             zero_btn(v);
-
         }
         else if (v.getId() == R.id.one) {
             one_btn(v);
@@ -191,6 +187,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v.getId() == R.id.modulo){
             modulo_btn(v);
         }
+
+        String dataToCalculate = input.getText().toString();
+        String finalResult = setAnswer(dataToCalculate);
+        if (!finalResult.equals("Err")){
+            if (finalResult.endsWith(".0")){
+                finalResult = finalResult.replace(".0", "");
+                answer.setText(finalResult);
+            } else{
+                answer.setText(finalResult);
+            }
+
+        } else if (finalResult.equals("")){
+            answer.setText("");
+        }
+
     }
 
     public void dot_btn(View view){
@@ -252,7 +263,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void allClear_btn(View view){
-        input.setText("");
+        input.setText("꣐");
+        answer.setText("");
     }
 
     public void modulo_btn(View view){
@@ -307,14 +319,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Expression exp = new Expression(userExp);
         String result = String.valueOf(exp.calculate());
 
-        if (result.endsWith(".0")){
+       if (result.endsWith(".0")){
             result =result.replace(".0", "");
             input.setText(result);
+            answer.setText("");
         } else{
             input.setText(result);
+            answer.setText("");
         }
 
         input.setSelection(result.length());
+
+    }
+
+
+    String setAnswer(String data){
+        try{
+            Context context = Context.enter();
+            context.setOptimizationLevel(-1);
+            Scriptable scriptable =  context.initStandardObjects();
+            String finalResult = context.evaluateString(scriptable,data,"Javascript",1, null).toString();
+            return finalResult;
+        }catch (Exception e){
+            return "Err";
+        }
+
 
     }
 

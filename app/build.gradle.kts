@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+
+    implementation ("com.faendir.rhino:rhino-android:1.5.2")
     implementation ("org.mariuszgromada.math:MathParser.org-mXparser:5.2.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
